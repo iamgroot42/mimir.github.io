@@ -84,12 +84,12 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><img src="static/images/tifa.png" alt="icon" style="width:80px; transform: translateY(20%);"><span style="color: rgb(178, 51, 51);"><b>TIFA</b></span>: Text-to-Image Faithfulness Evaluation with Question Answering</h1>
+          <h1 class="title is-1 publication-title"><img src="static/images/min-k_icon.png" alt="icon" style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://weijia-shi.netlify.app/">Weijia Shi</a><sup>1</sup>,</span>
+              <a href="https://weijia-shi.netlify.app/"><sup>*</sup>Weijia Shi</a><sup>1</sup>,</span>
             <span class="author-block">
-              Anirudh Ajith</a><sup>2</sup>,</span>
+            <sup>*</sup> Anirudh Ajith</a><sup>2</sup>,</span>
             <span class="author-block">
               <a href="https://xiamengzhou.github.io/">Mengzhou Xia</a><sup>2</sup>,
             </span>
@@ -166,7 +166,7 @@
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>WIKIMIA datasets</span>
+                  <span>WikiMIA datasets</span>
                   </a>
               </span>
 
@@ -208,15 +208,15 @@
     <div class="hero-body">
 
       <h2 class="subtitle has-text-centered">
-        Although large language models are widely deployed, the data used to train them is rarely disclosed. We propose <span style="color: red;"><b>a reference-free detection method Min-K Prob</b></span>: <i> given a piece of text and black-box access to a large-scale language model such as GPT-3 without knowing the pretraining data, Min-K Prob can detect whether if the model
-        was trained on the provided text.</i> Min-K Prob is an effective tool for detecting dataset contanmination and copyrighted books in language models' training data. 
-        <span class="dnerf">TIFA</span> is a simple tool to evaluate fine-grained text-image alignment by asking and answering questions about it, utilizing the power of <span style="color: red;"><b>Large Language Models (GPT, LLaMA 2)</b></span> and <span style="color: red;"><b>Image-to-Text Models (e.g. BLIP-2).</b></span>
+        Although large language models are widely deployed, the data used to train them is rarely disclosed. We propose <span style="color: red;"><b>a reference-free detection method Min-K Prob</b></span>: <b> given a piece of text and black-box access to a large-scale language model such as GPT-3 without knowing the pretraining data, Min-K Prob can detect whether if the model
+        was trained on the provided text.</b> <br>
+        Min-K Prob is an effective tool for detecting dataset contanmination and copyrighted books in language models' training data. 
       </h2>
-      <img src="./static/images/tifa_webteaser.jpeg" alt="tifa teaser">
-            <h2 class="subtitle has-text-centered">
+      <img src="./static/images/intro.png" alt="teaser">
+            <!-- <h2 class="subtitle has-text-centered">
               Step1: Generate a checklist of question-answer pairs with LLM (now GPT-3). <br>
               Step2: Check whether existing VQA models can answer these questions using the generated image.
-            </h2>
+            </h2> -->
 
       
     </div>
