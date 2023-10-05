@@ -210,24 +210,24 @@
       <h2 class="subtitle has-text-centered">
         Although large language models are widely deployed, the data used to train them is rarely disclosed. We propose <span style="color: red;"><b>a reference-free detection method Min-K Prob</b></span>: <b> given a piece of text and black-box access to a large language model (e.g., GPT-3) without knowing the pretraining data, Min-K Prob can detect whether if the model
         was trained on the provided text.</b> <br>
-        Min-K Prob is an effective tool for detecting benchmark example contanmination and copyrighted books in language models' training data. 
       </h2>
       <img src="./static/images/intro.png" alt="teaser">
             <!-- <h2 class="subtitle has-text-centered">
               Step1: Generate a checklist of question-answer pairs with LLM (now GPT-3). <br>
               Step2: Check whether existing VQA models can answer these questions using the generated image.
             </h2> -->
-
-      
+        Min-K Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted texts</i> in
+        language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K Prob. 
+        <img src="./static/images/books.png" alt="teaser">
     </div>
   </div>
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
+<!-- <section class="section"> -->
+  <!-- <div class="container is-max-desktop"> -->
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Why TIFA?</h2>
         <div class="content has-text-justified">
@@ -244,7 +244,7 @@
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+    / Abstract. -->
 
 
 
@@ -255,38 +255,29 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            Text-to-image generation models often fail to produce images that accurately align with the text inputs. We introduce <span style="color: red;"><b>TIFA (Text-to-image Faithfulness evaluation with question Answering)</b></span>, an automatic evaluation metric that measures the faithfulness of a generated image to its text input via <span style="color: red;"><b>visual question answering (VQA). </b></span>
-          </p>
-           <p>
-            Specifically, given a text input, we automatically generate several question-answer pairs using a <span style="color: red;"><b>language model</b></span>. We calculate image faithfulness by checking whether existing VQA models can answer these questions using the generated image. TIFA is a reference-free metric that allows for <span style="color: red;"><b>fine-grained and interpretable</b></span> evaluations of generated images.TIFA also has better correlations with human judgments than existing metrics (CLIP and SPICE). 
-          </p>
-          
-          <p>
-            Based on this approach, we introduce <span style="color: red;"><b>TIFA v1.0</b></span>, a benchmark consisting of 4K diverse text inputs and 25K questions across 12 categories (object, counting, etc.). We present a comprehensive evaluation of existing text-to-image models using TIFA v1.0 and highlight the limitations and challenges of current models. For instance, we find that current text-to-image models, despite doing well on color and material, still <span style="color: red;"><b>struggle in counting, spatial relations, and composing multiple objects</b></span>. We hope our benchmark will help carefully measure the research progress in text-to-image synthesis and provide valuable insights for further research.
-          </p>
-          
+        <p> Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed. Given the
+        incredible scale of this data, up to trillions of tokens, it is all but certain that it includes potentially problematic
+        text such as copyrighted materials, personally identifiable information, and test data for widely reported reference
+        benchmarks. However, we currently have no way to know which data of these types is included or in what proportions. </p> 
+
+        <p> In this paper, we study the <span style="color: red;"><b> pretraining data detection problem </b></span>: given a piece of text and black-box access to an LLM
+        without knowing the pretraining data, can we determine if the model was trained on the provided text? To facilitate this
+        study, we introduce <span style="color: red;"><b> a dynamic benchmark WikiMIA </b></span> that uses data created before and after model training to support gold
+        truth detection.</p>
+        
+        <p> We also introduce a new <span style="color: red;"><b> detection method Min-K Prob </b></span>  based on a simple hypothesis: an unseen example is
+        likely to contain a few outlier words with low probabilities under the LLM, while a seen example is less likely to have
+        words with such low probabilities. Min-K Prob can be applied without any knowledge about the pretraining corpus or any
+        additional training, departing from previous detection methods that require training a reference model on data that is
+        similar to the pretraining data. Moreover, our experiments demonstrate that Min-K Prob achieves a 7.4% improvement on
+        WikiMIA over these previous methods. We apply Min-K Prob to two real-world scenarios, copyrighted book detection, and
+        contaminated downstream example detection, and find it a consistently effective solution.      
+        </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Updates</h2>
-      <div class="content has-text-justified">
-        <p>
-          Please email the authors if you want to submit to the leaderboard! <br>
-          <b>2023/08/22</b> We released the <a href="https://huggingface.co/tifa-benchmark/llama2_tifa_question_generation/">fine-tuned LLaMA 2 (7B) model</a> that allows users to parse texts and generate questions locally without relying on OpenAI API. <br>
-          <b>2023/04/19</b> We released the human annotations on text-to-image faithufulness for TIFA v1.0. Check it out in our repo!<br>
-          <b>2023/03/24</b> TIFA v1.0 is released! We also updated our evaluation code, VQA modules, and question generation modules. <br>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="hero is-small">
   <div class="hero-body">
