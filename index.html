@@ -128,16 +128,7 @@
                     <span>Paper</span>
                   </a>
                 </span>
-                <!-- <span class="link-block">
-                <a href="https://arxiv.org/pdf/2211.09699.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
-                <!-- Video Link. -->
+     
 
         
 
@@ -198,13 +189,17 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
-       <span style="color: red;"><b>Min-K% Prob</b></span> is a simple yet effective method that can
-          detect whether if a large language model (e.g., GPT-3) was trained on the provided text without knowing the pretraining data.</b>
+        <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="vertical-align: middle;"> is
+        a simple yet effective method that can
+        detect whether if a large language model (e.g., GPT-3) was trained on the provided text without knowing the
+        pretraining data.
       </h2>
       <img src="./static/images/intro.png" alt="teaser">
-      Min-K Prob is an effective tool for <i>detecting benchmark example contamination</i> and <i>copyrighted texts</i>
+      Min-K% Prob is an effective tool for <b><a href="#copyrightedBookDetection">detecting benchmark example
+          contamination</a></b> and <b>copyrighted texts</b>
       in
-      language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K Prob.
+      language models' training data. <span style="font-size: larger;">Top 20 copyrighted books in GPT-3's pretraining
+        data detected by Min-K% Prob.</span>
     </div>
   </div>
 </section>
@@ -216,48 +211,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
-            Given the
-            incredible scale of this data, up to trillions of tokens, it's nearly certain it includes potentially
-            problematic
-            text such as copyrighted materials, personally identifiable information, and test data for widely reported
-            reference
-            benchmarks. However, we currently lack knowledge on which data of these types is included or in what
-            proportions.
-          </p>
-
-          <p>
-            In this paper, we explore the pretraining data detection problem <span>&#128269;</span>: given a piece of
-            text and
-            black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
-            on the
-            provided text? To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
-                target="_blank">
-                a dynamic benchmark WikiMIA</a></b> <span>&#128214;</span> that utilizes data crafted both before and
-            after model training
-            to provide accurate detection.
-          </p>
-
-          <p>
-            We also unveil a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
-                method Min-K%
-                Prob</a></b> <img src="min-k_icon.png" alt="Min-K Icon" style="vertical-align: middle;">. This is built
-            on a straightforward
-            hypothesis: an unobserved example is more likely to have a few outlier words with low probabilities under
-            the LLM,
-            while a recognized example is less inclined to contain words with such reduced probabilities. Min-K Prob
-            operates
-            without any insight into the pretraining corpus or any extra training, distinguishing it from past detection
-            strategies
-            that necessitate educating a reference model on data analogous to the pretraining data. Furthermore, our
-            tests indicate
-            that Min-K Prob delivers a 7.4% enhancement on WikiMIA relative to these preceding techniques. We employ
-            Min-K Prob in
-            two real-life contexts: detecting copyrighted books and pinpointing contaminated downstream examples, and we
-            discover
-            it's consistently an effective solution.
-          </p>
+          <!-- ... Your existing content ... -->
         </div>
       </div>
     </div>
@@ -265,23 +219,21 @@
   </div>
 </section>
 
-
-<section class="hero teaser">
+<section class="hero teaser" id="copyrightedBookDetection">
   <div class="container is-max-desktop">
     <div class="hero-body">
-
-      <h2 class="subtitle has-text-centered">
-        Min-K Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted
-          texts</i> in
-        language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K Prob.
+      <h2 class="subtitle has-text-centered" style="font-size: larger;">
+        Copyrighted Book Detection
       </h2>
-      <!DOCTYPE html>
-      <html lang="en">
+    </div>
+  </div>
+</section>
+
 
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Top 20 Copyrighted Books in GPT-3's Pretraining Data</title>
+        <title>Top 20 Copyrighted Books in GPT-3's Pretraining Data detected by Min-K% Prob</title>
         <style>
           table {
             width: 100%;
