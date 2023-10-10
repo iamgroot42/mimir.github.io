@@ -189,17 +189,18 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
-  <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:25px; height:25px;"> is a
-  simple yet effective method that can detect whether if a large language model (e.g., GPT-3) was trained on the provided
+  We propose <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:25px; height:25px;">, a
+  simple and effective method that can detect whether if a large language model (e.g., GPT-3) was trained on the provided
   text without knowing the pretraining data.</b>
   
       <img src="./static/images/intro.png" alt="teaser">
 
-      <h2 class="subtitle has-text-centered">
-      Min-K% Prob is an effective tool for <b>detecting benchmark example contamination</b> and <a href="#copyrighted-detection"> <b>copyrighted texts</b> </a>
-      in
-      language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K% Prob. 
-        </h2>
+<h2 class="subtitle" style="font-size: 0.8em;">
+  Min-K% Prob is an effective tool for <b>detecting benchmark example contamination</b> and
+  <a href="#copyrighted-detection"> <b>copyrighted texts</b> </a> in language models' training data.
+  Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K% Prob.
+</h2>
+
     </div>
   </div>
 </section>
@@ -223,7 +224,7 @@
           </p>
 
           <p>
-            In this paper, we explore the pretraining data detection problem <span style="font-size: 2em;">&#x1F575;&#xFE0F;</span>: given a piece of
+            In this paper, we explore the pretraining data detection problem<span>&#x1F575;&#xFE0F;</span>: given a piece of
             text and
             black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
             on the
@@ -262,10 +263,9 @@
 
 
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-
+    <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3" id="copyrighted-detection">Copyrighted Book Detection</h2>
         <div class="content has-text-justified">
