@@ -1,137 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Detecting Pretraining Data from Large Language Models">
-  <meta name="keywords"
-    content="Membership Inference Attack, Copyrighted Information Detection, Dataset contamination, GPT-3">
+  <meta name="description"
+        content="Detecting Pretraining Data from Large Language Models">
+  <meta name="keywords" content="Membership Inference Attack, Copyrighted Information Detection, Dataset contamination, GPT-3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Detecting Pretraining Data from Large Language Models</title>
 
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MFCT45H');
-  </script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-MFCT45H');</script>
+<!-- End Google Tag Manager -->
 
-  <!-- Stylesheets and Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/min-k_icon.png">
 
-  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-
-  <!-- Table Styles -->
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
-
-    th,
-    td {
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
 </head>
-
 <body>
-
   <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFCT45H" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFCT45H" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="static/images/min-k_icon.png" alt="icon" style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://weijia-shi.netlify.app/"><sup>*</sup>Weijia Shi</a><sup>1</sup>,</span>
+            <span class="author-block">
+            <sup>*</sup> Anirudh Ajith</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://xiamengzhou.github.io/">Mengzhou Xia</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://hazelsuko07.github.io/yangsibo/">Yangsibo Huang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://daogaoliu.github.io/">Daogao Liu</a><sup>1</sup>,
+            </span>
+              <span class="author-block">
+                    <a href="https://blvns.github.io/">Terra Blevins</a><sup>1</sup>,
+                    </span>
+            <span class="author-block">
+              <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.washington.edu/people/faculty/lsz">Luke Zettlemoyer</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Washington,</span>
+            <span class="author-block"><sup>2</sup>Princeton University</span>
+          </div>
+
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              <img src="static/images/min-k_icon.png" alt="icon"
-                style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models
-            </h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><a href="https://weijia-shi.netlify.app/"><sup>*</sup>Weijia
-                  Shi</a><sup>1</sup>,</span>
-              <span class="author-block"><sup>*</sup> Anirudh Ajith<sup>2</sup>,</span>
-              <span class="author-block"><a href="https://xiamengzhou.github.io/">Mengzhou Xia</a><sup>2</sup>,</span>
-              <span class="author-block"><a href="https://hazelsuko07.github.io/yangsibo/">Yangsibo
-                  Huang</a><sup>2</sup>,</span>
-              <span class="author-block"><a href="https://daogaoliu.github.io/">Daogao Liu</a><sup>1</sup>,</span>
-              <span class="author-block"><a href="https://blvns.github.io/">Terra Blevins</a><sup>1</sup>,</span>
-              <span class="author-block"><a href="https://www.cs.princeton.edu/~danqic/">Danqi
-                  Chen</a><sup>2</sup></span>
-              <span class="author-block"><a href="https://www.cs.washington.edu/people/faculty/lsz">Luke
-                  Zettlemoyer</a><sup>1</sup>,</span>
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2303."
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2211.09699.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/swj0419/detect-pretrain"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/swj0419/detect-pretrain-code" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+              <!-- Model Link. -->
+              <!-- <span class="link-block">
+                <a href="https://huggingface.co/tifa-benchmark/llama2_tifa_question_generation/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>LLaMA 2 Parsing + QA Generation Model</span>
+                </a>
+              </span> -->
+
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/swj0419/WikiMIA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>WikiMIA datasets</span>
+                  </a>
+              </span>
+
+ 
+
+      <!-- <span class="link-block">
+        <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+            <i class="far fa-images"></i>
+          </span>
+          <span>TIFA v1.0 Leaderboard</span>
+        </a>
+      </span> -->
+
+
             </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>University of Washington,</span>
-              <span class="author-block"><sup>2</sup>Princeton University</span>
-            </div>
-            <!-- Rest of the hero content... -->
+
+                          
+
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-   <section class="hero teaser">
-      <div class="container">
-        <div class="hero-body">
-          <h2 class="subtitle has-text-centered">
-            Although large language models are widely deployed, the data used to train them is rarely disclosed. We
-            propose <span style="color: red;"><b>a reference-free detection method Min-K% Prob</b></span>: <b>given a piece
-              of text and black-box access to a large language model (e.g., GPT-3) without knowing the pretraining data,
-              Min-K% Prob can detect whether if the model was trained on the provided text.</b>
-          </h2>
-          <img src="./static/images/intro.png" alt="teaser" style="margin: 20px 0;">
-          Min-K% Prob is an effective tool for <i>detecting benchmark example contamination</i> and <i>copyrighted texts</i>
-          in language models' training data. 📚 Top 20 copyrighted books in GPT-3's pretraining data detected Min-K% Prob.
-        </div>
-      </div>
-    </section>
-
+  </div>
+</section>
 
 
 <section class="hero teaser">
-  <div class="container">
+  <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="subtitle has-text-centered">
-        &#128373;&#65039; Min-K% Prob is an effective tool for <i>detecting benchmark example contamination</i> and <i>copyrighted
-          texts</i> in language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected
-        Min-K% Prob.
-      </h2>
 
+      <h2 class="subtitle has-text-centered">
+        Although large language models are widely deployed, the data used to train them is rarely disclosed. We propose <span style="color: red;"><b>a reference-free detection method Min-K% Prob</b></span>: <b> given a piece of text and black-box access to a large language model (e.g., GPT-3) without knowing the pretraining data, Min-K% Prob can detect whether if the model
+        was trained on the provided text.</b> <br>
+      </h2>
+      <img src="./static/images/intro.png" alt="teaser">
+            <!-- <h2 class="subtitle has-text-centered">
+              Step1: Generate a checklist of question-answer pairs with LLM (now GPT-3). <br>
+              Step2: Check whether existing VQA models can answer these questions using the generated image.
+            </h2> -->
+        Min-K% Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted texts</i> in
+        language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K% Prob. 
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+      <h2 class="subtitle has-text-centered">
+          Min-K% Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted texts</i> in
+          language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K% Prob.
+      </h2>
     <!DOCTYPE html>
     <html lang="en">
     
@@ -332,75 +397,45 @@
     </div>
     / Abstract. -->
 
-
-
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-        <p> Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed. Given the
-        incredible scale of this data, up to trillions of tokens, it is all but certain that it includes potentially problematic
-        text such as copyrighted materials, personally identifiable information, and test data for widely reported reference
-        benchmarks. However, we currently have no way to know which data of these types is included or in what proportions. </p> 
-
-        <p> In this paper, we study the <span style="color: red;"><b> pretraining data detection problem </b></span>: given a piece of text and black-box access to an LLM
-        without knowing the pretraining data, can we determine if the model was trained on the provided text? To facilitate this
-        study, we introduce <span style="color: red;"><b> a dynamic benchmark WikiMIA </b></span> that uses data created before and after model training to support gold
-        truth detection.</p>
-        
-        <p> We also introduce a new <span style="color: red;"><b> detection method Min-K% Prob </b></span>  based on a simple hypothesis: an unseen example is
-        likely to contain a few outlier words with low probabilities under the LLM, while a seen example is less likely to have
-        words with such low probabilities. Min-K% Prob can be applied without any knowledge about the pretraining corpus or any
-        additional training, departing from previous detection methods that require training a reference model on data that is
-        similar to the pretraining data. Moreover, our experiments demonstrate that Min-K% Prob achieves a 7.4% improvement on
-        WikiMIA over these previous methods. We apply Min-K% Prob to two real-world scenarios, copyrighted book detection, and
-        contaminated downstream example detection, and find it a consistently effective solution.      
-        </p>
+          <p>Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
+            Given the incredible scale of this data, up to trillions of tokens, it is all but certain that it includes
+            potentially problematic text such as copyrighted materials, personally identifiable information, and test
+            data for widely reported reference benchmarks. However, we currently have no way to know which data of these
+            types is included or in what proportions.</p>
+          <p>In this paper, we study the <span style="color: red;"><b>pretraining data detection problem</b></span>:
+            given a piece of text and black-box access to an LLM without knowing the pretraining data, can we determine
+            if the model was trained on the provided text? To facilitate this study, we introduce <span
+              style="color: red;"><b>a dynamic benchmark WikiMIA</b></span> that uses data created before and after
+            model training to support gold truth detection.</p>
+          <p>We also introduce a new <span style="color: red;"><b>detection method Min-K% Prob</b></span> based on a
+            simple hypothesis: an unseen example is likely to contain a few outlier words with low probabilities under
+            the LLM, while a seen example is less likely to have words with such low probabilities. Min-K% Prob can be
+            applied without any knowledge about the pretraining corpus or any additional training, departing from
+            previous detection methods that require training a reference model on data that is similar to the
+            pretraining data. Moreover, our experiments demonstrate that Min-K% Prob achieves a 7.4% improvement on
+            WikiMIA over these previous methods. We apply Min-K% Prob to two real-world scenarios, copyrighted book
+            detection, and contaminated downstream example detection, and find it a consistently effective solution.</p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">WikiMIA Benchmark</h2>
-      <div class="content has-text-justified">
-        <p>
-          📘 WikiMIA Datasets
-          The WikiMIA datasets (https://huggingface.co/datasets/swj0419/WikiMIA) serve as a benchmark designed to evaluate membership inference attack (MIA) methods, specifically
-          in detecting pretraining data from extensive large language models. The datasets can be applied to various models released between 2017 to 2023:
-          LLaMA1/2
-          GPT-Neo
-          OPT
-          Pythia
-          text-davinci-001
-          text-davinci-002
-          ... and more.
-        </p>
-
-      </div>
-    </div>
   </div>
 </section>
 
-
 <section class="hero is-small">
   <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Min K% Prob</h2>
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">WikiMIA Benchmark</h2>
       <div class="content has-text-justified">
-        <br>
-        <p>
-          We propose a new detection method Min-K% Prob, which is based on a simple hypothesis: an unseen example is likely to contain a few outlier words with low probabilities under the LLM, while a seen example is less likely to have words with such low probabilities. Min-K% Prob can be applied without any knowledge about the pretraining corpus or any additional training, departing from previous detection methods that require training a reference model on data that is similar to the pretraining data. Moreover, our experiments demonstrate that Min-K% Prob achieves a 7.4% improvement on WikiMIA over these previous methods. We apply Min-K% Prob to two real-world scenarios, copyrighted
-          book detection, and contaminated downstream example detection, and find it a consistently effective solution.
-          For evaluating our Min-K% Prob and other baselines on our datasets, visit our GitHub repository. https://github.com/swj0419/detect-pretrain-code
-
-        </p>
+        <p>📘 WikiMIA Datasets The <a href="https://huggingface.co/datasets/swj0419/WikiMIA">WikiMIA datasets</a> serve
+          as a benchmark designed to evaluate membership inference attack (MIA) methods, specifically in detecting
+          pretraining data from extensive large language models. The datasets can be applied to various models released
+          between 2017 to 2023: LLaMA1/2 GPT-Neo OPT Pythia text-davinci-001 text-davinci-002 ... and more.</p>
       </div>
     </div>
   </div>
@@ -408,21 +443,36 @@
 
 <section class="hero is-small">
   <div class="hero-body">
-    <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3">Analysis of detection difficutly</h2>
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Min K% Prob</h2>
       <div class="content has-text-justified">
-        <br>
-        <p>
-          our controlled study on dataset contamination detection sheds light on the impact of
-          pretraining design choices on detection difficulty; we find detection becomes harder when training
-          data sizes increase, and occurrence frequency of the detecting example and learning rates decreases. the longer the context length, the easier the detection. the larger the model size, the easier the detection.
-
-        </p>
+        <p>We propose a new detection method Min-K% Prob, which is based on a simple hypothesis: an unseen example is
+          likely to contain a few outlier words with low probabilities under the LLM, while a seen example is less
+          likely to have words with such low probabilities. Min-K% Prob can be applied without any knowledge about the
+          pretraining corpus or any additional training, departing from previous detection methods that require training
+          a reference model on data that is similar to the pretraining data. Moreover, our experiments demonstrate that
+          Min-K% Prob achieves a 7.4% improvement on WikiMIA over these previous methods. We apply Min-K% Prob to two
+          real-world scenarios, copyrighted book detection, and contaminated downstream example detection, and find it a
+          consistently effective solution. For evaluating our Min-K% Prob and other baselines on our datasets, visit our
+          <a href="https://github.com/swj0419/detect-pretrain-code">GitHub repository</a>.</p>
       </div>
     </div>
   </div>
 </section>
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Analysis of Detection Difficulty</h2>
+      <div class="content has-text-justified">
+        <p>Our controlled study on dataset contamination detection sheds light on the impact of pretraining design
+          choices on detection difficulty; we find detection becomes harder when training data sizes increase, and
+          occurrence frequency of the detecting example and learning rates decreases. The longer the context length, the
+          easier the detection. The larger the model size, the easier the detection.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section is-light" id="BibTeX">
   <div class="container is-max-desktop content">
