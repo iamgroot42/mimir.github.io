@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Detecting Pretraining Data from Large Language Models">
-  <meta name="keywords" content="Membership Inference Attack, Copyrighted Information Detection, Dataset contamination, GPT-3">
+  <meta name="description" content="Detecting Pretraining Data from Large Language Models">
+  <meta name="keywords"
+    content="Membership Inference Attack, Copyrighted Information Detection, Dataset contamination, GPT-3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Detecting Pretraining Data from Large Language Models</title>
 
-<!-- Google Tag Manager -->
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-      'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-MFCT45H');</script>
-<!-- End Google Tag Manager -->
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MFCT45H');</script>
+  <!-- End Google Tag Manager -->
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/min-k_icon.png">
+  <link rel="icon" href="./static/images/tifa.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -37,6 +36,7 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
+
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFCT45H" height="0" width="0"
@@ -44,56 +44,91 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://yushi-hu.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><img src="static/images/min-k_icon.png" alt="icon" style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://weijia-shi.netlify.app/"><sup>*</sup>Weijia Shi</a><sup>1</sup>,</span>
-            <span class="author-block">
-            <sup>*</sup> Anirudh Ajith</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://xiamengzhou.github.io/">Mengzhou Xia</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://hazelsuko07.github.io/yangsibo/">Yangsibo Huang</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://daogaoliu.github.io/">Daogao Liu</a><sup>1</sup>,
-            </span>
-              <span class="author-block">
-                    <a href="https://blvns.github.io/">Terra Blevins</a><sup>1</sup>,
-                    </span>
-            <span class="author-block">
-              <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a><sup>2</sup>
-            </span>
-            <span class="author-block">
-              <a href="https://www.cs.washington.edu/people/faculty/lsz">Luke Zettlemoyer</a><sup>1</sup>,
-            </span>
-          </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://finegrainedrlhf.github.io/">
+            Fine-Grained RLHF
+          </a>
+          <a class="navbar-item" href="https://yushi-hu.github.io/promptcap_demo/">
+            PromptCap
+          </a>
+        </div>
+      </div>
+    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Princeton University</span>
-          </div>
+  </div>
+</nav> -->
 
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2303."
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
+            <h1 class="title is-1 publication-title"><img src="static/images/min-k_icon.png" alt="icon"
+                style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://weijia-shi.netlify.app/"><sup>*</sup>Weijia Shi</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <sup>*</sup> Anirudh Ajith</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://xiamengzhou.github.io/">Mengzhou Xia</a><sup>2</sup>,
               </span>
-              <!-- <span class="link-block">
+              <span class="author-block">
+                <a href="https://hazelsuko07.github.io/yangsibo/">Yangsibo Huang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://daogaoliu.github.io/">Daogao Liu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://blvns.github.io/">Terra Blevins</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a><sup>2</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.washington.edu/people/faculty/lsz">Luke Zettlemoyer</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Washington,</span>
+              <span class="author-block"><sup>2</sup>Princeton University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2303." class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- <span class="link-block">
                 <a href="https://arxiv.org/pdf/2211.09699.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -102,52 +137,43 @@
                   <span>arXiv</span>
                 </a>
               </span> -->
-              <!-- Video Link. -->
-              
-              <!-- Code Link. -->
+                <!-- Video Link. -->
+
+        
+
+              <!-- code Link. -->
               <span class="link-block">
-                <a href="https://github.com/swj0419/detect-pretrain"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-
-                <span class="link-block">
-                  <a href="https://github.com/swj0419/detect-pretrain-code" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-              <!-- Model Link. -->
-              <!-- <span class="link-block">
-                <a href="https://huggingface.co/tifa-benchmark/llama2_tifa_question_generation/" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/swj0419/detect-pretrain-code" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
-                  <span>LLaMA 2 Parsing + QA Generation Model</span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/swj0419/WikiMIA"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>WikiMIA datasets</span>
+                  </a>
+                </span>
+
+                <!-- Annotations Link. -->
+                <!-- <span class="link-block">
+                <a href="https://github.com/Yushi-Hu/tifa/tree/main/human_annotations"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="far fa-images"></i>
+                  </span>
+                  <span>Human Annotations</span>
                 </a>
               </span> -->
 
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/swj0419/WikiMIA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>WikiMIA datasets</span>
-                  </a>
-              </span>
-
- 
-
-      <!-- <span class="link-block">
+                <!-- <span class="link-block">
         <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
           <span class="icon">
             <i class="far fa-images"></i>
@@ -157,360 +183,316 @@
       </span> -->
 
 
+              </div>
+
+
+
             </div>
-
-                          
-
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-
       <h2 class="subtitle has-text-centered">
-        Although large language models are widely deployed, the data used to train them is rarely disclosed. We propose <span style="color: red;"><b>a reference-free detection method Min-K% Prob</b></span>: <b> given a piece of text and black-box access to a large language model (e.g., GPT-3) without knowing the pretraining data, Min-K% Prob can detect whether if the model
-        was trained on the provided text.</b> <br>
+       <span style="color: red;"><b>Min-K% Prob</b></span> is a simple yet effective method that can
+          detect whether if a large language model (e.g., GPT-3) was trained on the provided text without knowing the pretraining data.</b>
       </h2>
       <img src="./static/images/intro.png" alt="teaser">
-            <!-- <h2 class="subtitle has-text-centered">
-              Step1: Generate a checklist of question-answer pairs with LLM (now GPT-3). <br>
-              Step2: Check whether existing VQA models can answer these questions using the generated image.
-            </h2> -->
-        Min-K% Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted texts</i> in
-        language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K% Prob. 
+      Min-K Prob is an effective tool for <i>detecting benchmark example contamination</i> and <i>copyrighted texts</i>
+      in
+      language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K Prob.
     </div>
   </div>
 </section>
-
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-
-      <h2 class="subtitle has-text-centered">
-          Min-K% Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted texts</i> in
-          language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K% Prob.
-      </h2>
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Top 20 Copyrighted Books in GPT-3's Pretraining Data</title>
-      <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-    
-        table,
-        th,
-        td {
-          border: 1px solid black;
-        }
-    
-        th,
-        td {
-          padding: 8px;
-          text-align: left;
-        }
-    
-        th {
-          background-color: #f2f2f2;
-        }
-      </style>
-    </head>
-    
-    <body>
-    
-      <table>
-        <caption>Top 20 copyrighted books in GPT-3's pretraining data (text-davinci-003). The listed contamination rate represents the
-          percentage of text excerpts from each book identified in the pretraining data.</caption>
-        <thead>
-          <tr>
-            <th>Contamination %</th>
-            <th>Book Title</th>
-            <th>Author</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>100</td>
-            <td>The Violin of Auschwitz</td>
-            <td>Maria Àngels Anglada</td>
-            <td>2010</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>North American Stadiums</td>
-            <td>Grady Chambers</td>
-            <td>2018</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>White Chappell Scarlet Tracings</td>
-            <td>Iain Sinclair</td>
-            <td>1987</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>Lost and Found</td>
-            <td>Alan Dean</td>
-            <td>2001</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>A Different City</td>
-            <td>Tanith Lee</td>
-            <td>2015</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>Our Lady of the Forest</td>
-            <td>David Guterson</td>
-            <td>2003</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td>The Expelled</td>
-            <td>Mois Benarroch</td>
-            <td>2013</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>Blood Cursed</td>
-            <td>Archer Alex</td>
-            <td>2013</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>Genesis Code: A Thriller of the Near Future</td>
-            <td>Jamie Metzl</td>
-            <td>2014</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>The Sleepwalker's Guide to Dancing</td>
-            <td>Mira Jacob</td>
-            <td>2014</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>The Harlan Ellison Hornbook</td>
-            <td>Harlan Ellison</td>
-            <td>1990</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>The Book of Freedom</td>
-            <td>Paul Seli
-            <td>2018</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>Three Strong Women</td>
-            <td>Marie NDiaye</td>
-            <td>2009</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>The Leadership Mind Switch: Rethinking How We Lead in the New World of Work</td>
-            <td>D. A. Benton, Kylie Wright-Ford</td>
-            <td>2017</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>Gold</td>
-            <td>Chris Cleave</td>
-            <td>2012</td>
-          </tr>
-          <tr>
-            <td>99</td>
-            <td>The Tower</td>
-            <td>Simon Clark</td>
-            <td>2005</td>
-          </tr>
-          <tr>
-            <td>98</td>
-            <td>Amazon</td>
-            <td>Bruce Parry</td>
-            <td>2009</td>
-          </tr>
-          <tr>
-            <td>98</td>
-            <td>Ain't It Time We Said Goodbye: The Rolling Stones on the Road to Exile</td>
-            <td>Robert Greenfield</td>
-            <td>2014</td>
-          </tr>
-          <tr>
-            <td>98</td>
-            <td>Page One</td>
-            <td>David Folkenflik</td>
-            <td>2011</td>
-          </tr>
-          <tr>
-            <td>98</td>
-            <td>Road of Bones: The Siege of Kohima 1944</td>
-            <td>Fergal Keane</td>
-            <td>2010</td>
-          </tr>
-        </tbody>
-      </table>
-    
-    </body>
-    
-    </html>
-
-    </div>
-  </div>
-</section>
-
-
-
-<!-- <section class="section"> -->
-  <!-- <div class="container is-max-desktop"> -->
-    <!-- Abstract. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Why TIFA?</h2>
-        <div class="content has-text-justified">
-          <p>
-            Experiments show that <span style="color: red;"><b>TIFA is much more accurate than CLIP</b></span> in evaluating generated images, while being <span style="color: red;"><b>fine-grained and interpretable</b></span>. It is an ideal choice for fine-grained automatic evaluation of image generation.
-          </p>
-          <p>
-            TIFA works better because it leverages LLMs to decompose the text input into fine-grained probes (questions), which allows VQA to <span style="color: red;"><b>capture more nuanced aspects</b></span> of the text input and the generated image. Meanwhile, <span style="color: red;"><b>CLIP summarizes the image as a embedding</b></span>, making it inaccurate and unable to capture fine-grained details of an image.
-          </p>
-          <p>
-            <b>Do I need OpenAI API to run TIFA?</b> <span style="color: red;"><b>No, you don't. We have pre-generated the questions for you in TIFA v1.0 benchmark.</b></span> Meanwhile, we provide tools to generate your own questions with GPT-3.5.
-          </p>
-
-        </div>
-      </div>
-    </div>
-    / Abstract. -->
 
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
-            Given the incredible scale of this data, up to trillions of tokens, it is all but certain that it includes
-            potentially problematic text such as copyrighted materials, personally identifiable information, and test
-            data for widely reported reference benchmarks. However, we currently have no way to know which data of these
-            types is included or in what proportions.</p>
-          <p>In this paper, we study the <span style="color: red;"><b>pretraining data detection problem</b></span>:
-            given a piece of text and black-box access to an LLM without knowing the pretraining data, can we determine
-            if the model was trained on the provided text? To facilitate this study, we introduce <span
-              style="color: red;"><b>a dynamic benchmark WikiMIA</b></span> that uses data created before and after
-            model training to support gold truth detection.</p>
-          <p>We also introduce a new <span style="color: red;"><b>detection method Min-K% Prob</b></span> based on a
-            simple hypothesis: an unseen example is likely to contain a few outlier words with low probabilities under
-            the LLM, while a seen example is less likely to have words with such low probabilities. Min-K% Prob can be
-            applied without any knowledge about the pretraining corpus or any additional training, departing from
-            previous detection methods that require training a reference model on data that is similar to the
-            pretraining data. Moreover, our experiments demonstrate that Min-K% Prob achieves a 7.4% improvement on
-            WikiMIA over these previous methods. We apply Min-K% Prob to two real-world scenarios, copyrighted book
-            detection, and contaminated downstream example detection, and find it a consistently effective solution.</p>
+          <p>
+            Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
+            Given the
+            incredible scale of this data, up to trillions of tokens, it's nearly certain it includes potentially
+            problematic
+            text such as copyrighted materials, personally identifiable information, and test data for widely reported
+            reference
+            benchmarks. However, we currently lack knowledge on which data of these types is included or in what
+            proportions.
+          </p>
+
+          <p>
+            In this paper, we explore the pretraining data detection problem <span>&#128269;</span>: given a piece of
+            text and
+            black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
+            on the
+            provided text? To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
+                target="_blank">
+                a dynamic benchmark WikiMIA</a></b> <span>&#128214;</span> that utilizes data crafted both before and
+            after model training
+            to provide accurate detection.
+          </p>
+
+          <p>
+            We also unveil a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
+                method Min-K%
+                Prob</a></b> <img src="min-k_icon.png" alt="Min-K Icon" style="vertical-align: middle;">. This is built
+            on a straightforward
+            hypothesis: an unobserved example is more likely to have a few outlier words with low probabilities under
+            the LLM,
+            while a recognized example is less inclined to contain words with such reduced probabilities. Min-K Prob
+            operates
+            without any insight into the pretraining corpus or any extra training, distinguishing it from past detection
+            strategies
+            that necessitate educating a reference model on data analogous to the pretraining data. Furthermore, our
+            tests indicate
+            that Min-K Prob delivers a 7.4% enhancement on WikiMIA relative to these preceding techniques. We employ
+            Min-K Prob in
+            two real-life contexts: detecting copyrighted books and pinpointing contaminated downstream examples, and we
+            discover
+            it's consistently an effective solution.
+          </p>
         </div>
       </div>
     </div>
+    <!--/ Abstract. -->
   </div>
 </section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">WikiMIA Benchmark</h2>
-      <div class="content has-text-justified">
-        <p>📘 WikiMIA Datasets The <a href="https://huggingface.co/datasets/swj0419/WikiMIA">WikiMIA datasets</a> serve
-          as a benchmark designed to evaluate membership inference attack (MIA) methods, specifically in detecting
-          pretraining data from extensive large language models. The datasets can be applied to various models released
-          between 2017 to 2023: LLaMA1/2 GPT-Neo OPT Pythia text-davinci-001 text-davinci-002 ... and more.</p>
-      </div>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+      <h2 class="subtitle has-text-centered">
+        Min-K Prob is an effective tool for <i>detecting benchmark example contanmination</i> and <i>copyrighted
+          texts</i> in
+        language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected Min-K Prob.
+      </h2>
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Top 20 Copyrighted Books in GPT-3's Pretraining Data</title>
+        <style>
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          table,
+          th,
+          td {
+            border: 1px solid black;
+          }
+
+          th,
+          td {
+            padding: 8px;
+            text-align: left;
+          }
+
+          th {
+            background-color: #f2f2f2;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <table>
+          <caption>Top 20 copyrighted books in GPT-3's pretraining data. The listed contamination rate represents the
+            percentage of text excerpts from each book identified in the pretraining data.</caption>
+          <thead>
+            <tr>
+              <th>Contamination %</th>
+              <th>Book Title</th>
+              <th>Author</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100</td>
+              <td>The Violin of Auschwitz</td>
+              <td>Maria Àngels Anglada</td>
+              <td>2010</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>North American Stadiums</td>
+              <td>Grady Chambers</td>
+              <td>2018</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>White Chappell Scarlet Tracings</td>
+              <td>Iain Sinclair</td>
+              <td>1987</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>Lost and Found</td>
+              <td>Alan Dean</td>
+              <td>2001</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>A Different City</td>
+              <td>Tanith Lee</td>
+              <td>2015</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>Our Lady of the Forest</td>
+              <td>David Guterson</td>
+              <td>2003</td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>The Expelled</td>
+              <td>Mois Benarroch</td>
+              <td>2013</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>Blood Cursed</td>
+              <td>Archer Alex</td>
+              <td>2013</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>Genesis Code: A Thriller of the Near Future</td>
+              <td>Jamie Metzl</td>
+              <td>2014</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>The Sleepwalker's Guide to Dancing</td>
+              <td>Mira Jacob</td>
+              <td>2014</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>The Harlan Ellison Hornbook</td>
+              <td>Harlan Ellison</td>
+              <td>1990</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>The Book of Freedom</td>
+              <td>Paul Selig</td>
+              <td>2018</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>Three Strong Women</td>
+              <td>Marie NDiaye</td>
+              <td>2009</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>The Leadership Mind Switch: Rethinking How We Lead in the New World of Work</td>
+              <td>D. A. Benton, Kylie Wright-Ford</td>
+              <td>2017</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>Gold</td>
+              <td>Chris Cleave</td>
+              <td>2012</td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>The Tower</td>
+              <td>Simon Clark</td>
+              <td>2005</td>
+            </tr>
+            <tr>
+              <td>98</td>
+              <td>Amazon</td>
+              <td>Bruce Parry</td>
+              <td>2009</td>
+            </tr>
+            <tr>
+              <td>98</td>
+              <td>Ain't It Time We Said Goodbye: The Rolling Stones on the Road to Exile</td>
+              <td>Robert Greenfield</td>
+              <td>2014</td>
+            </tr>
+            <tr>
+              <td>98</td>
+              <td>Page One</td>
+              <td>David Folkenflik</td>
+              <td>2011</td>
+            </tr>
+            <tr>
+              <td>98</td>
+              <td>Road of Bones: The Siege of Kohima 1944</td>
+              <td>Fergal Keane</td>
+              <td>2010</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </body>
+
+      </html>
+
     </div>
   </div>
 </section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Min K% Prob</h2>
-      <div class="content has-text-justified">
-        <p>We propose a new detection method Min-K% Prob, which is based on a simple hypothesis: an unseen example is
-          likely to contain a few outlier words with low probabilities under the LLM, while a seen example is less
-          likely to have words with such low probabilities. Min-K% Prob can be applied without any knowledge about the
-          pretraining corpus or any additional training, departing from previous detection methods that require training
-          a reference model on data that is similar to the pretraining data. Moreover, our experiments demonstrate that
-          Min-K% Prob achieves a 7.4% improvement on WikiMIA over these previous methods. We apply Min-K% Prob to two
-          real-world scenarios, copyrighted book detection, and contaminated downstream example detection, and find it a
-          consistently effective solution. For evaluating our Min-K% Prob and other baselines on our datasets, visit our
-          <a href="https://github.com/swj0419/detect-pretrain-code">GitHub repository</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Analysis of Detection Difficulty</h2>
-      <div class="content has-text-justified">
-        <p>Our controlled study on dataset contamination detection sheds light on the impact of pretraining design
-          choices on detection difficulty; we find detection becomes harder when training data sizes increase, and
-          occurrence frequency of the detecting example and learning rates decreases. The longer the context length, the
-          easier the detection. The larger the model size, the easier the detection.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section is-light" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{hu2023tifa,
-title={...},
-author={...},
+      <section class="section is-light" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>@article{hu2023tifa,
+title={TIFA: Accurate and Interpretable Text-to-Image Faithfulness Evaluation with Question Answering},
+author={Hu, Yushi and Liu, Benlin and Kasai, Jungo and Wang, Yizhong and Ostendorf, Mari and Krishna, Ranjay and Smith,
+Noah A},
 journal={arXiv preprint arXiv:2303.11897},
 year={2023}
 }
+
+
 </code></pre>
-  </div>
-</section>
-
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
         </div>
-      </div>
-    </div>
-  </div>
-</footer>
+      </section>
+
+
+
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content">
+                <p>
+                  This website is licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                    Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+                <p>
+                  This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                    code</a> of this website,
+                  we just ask that you link back to this page in the footer.
+                  Please remember to remove the analytics code included in the header of the website which
+                  you do not want on your website.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
 </body>
+
 </html>
