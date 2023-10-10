@@ -84,8 +84,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><img src="static/images/min-k_icon.png" alt="icon"
-                style="width:80px; transform: translateY(20%);">Detecting Pretraining Data from Large Language Models
+            <h1 class="title is-1 publication-title"> <span style="font-size: 2em;">&#x1F575;&#xFE0F;</span>
+ Detecting Pretraining Data from Large Language Models
             </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -189,14 +189,17 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
-  <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:20px; height:20px;"> is a
+  <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:25px; height:25px;"> is a
   simple yet effective method that can detect whether if a large language model (e.g., GPT-3) was trained on the provided
   text without knowing the pretraining data.</b>
-      </h2>
+  
       <img src="./static/images/intro.png" alt="teaser">
+
+      <h2 class="subtitle has-text-centered">
       Min-K% Prob is an effective tool for <b>detecting benchmark example contamination</b> and <a href="#copyrighted-detection"> <b>copyrighted texts</b>
       in
-      language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K% Prob. (make this part bigger)
+      language models' training data. Top 20 copyrighted books in GPT-3's pretraining data detected by Min-K% Prob. 
+        </h2>
     </div>
   </div>
 </section>
@@ -220,7 +223,7 @@
           </p>
 
           <p>
-            In this paper, we explore the pretraining data detection problem <span>&#x1F575;&#xFE0F;</span>: given a piece of
+            In this paper, we explore the pretraining data detection problem <span style="font-size: 2em;">&#x1F575;&#xFE0F;</span>: given a piece of
             text and
             black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
             on the
@@ -234,7 +237,7 @@
           <p>
             We also design a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
                 method Min-K%
-                Prob</a></b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="width:20px; height:20px;">. This is built
+                Prob</a></b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="width:25px; height:25px;">. This is built
             on a straightforward
             hypothesis: an unobserved example is more likely to have a few outlier words with low probabilities under
             the LLM,
