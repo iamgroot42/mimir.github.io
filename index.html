@@ -2,6 +2,16 @@
 <html>
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DERZX1PWZ4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DERZX1PWZ4');
+  </script>
+
   <meta charset="utf-8">
   <meta name="description" content="Detecting Pretraining Data from Large Language Models">
   <meta name="keywords"
@@ -90,11 +100,11 @@
             </h1>
             <div class="is-size-5">
               <span class="author-block">
-                <a href="https://weijia-shi.netlify.app/" style="color:#f68946;font-weight:normal;">Weijia
+                <a href="http://swj0419.github.io" style="color:#f68946;font-weight:normal;">Weijia
                   Shi<sup>*</sup></a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="#" style="color:#008AD7;font-weight:normal;">Anirudh Ajith<sup>*</sup></a><sup>2</sup>,
+                <a href="https://anirudhajith.github.io/about/" style="color:#008AD7;font-weight:normal;">Anirudh Ajith<sup>*</sup></a><sup>2</sup>,
               </span>
               <span class="author-block">
                 <a href="https://xiamengzhou.github.io/" style="color:#008AD7;font-weight:normal;">Mengzhou
@@ -164,30 +174,8 @@
                   </a>
                 </span>
 
-                <!-- Annotations Link. -->
-                <!-- <span class="link-block">
-                <a href="https://github.com/Yushi-Hu/tifa/tree/main/human_annotations"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="far fa-images"></i>
-                  </span>
-                  <span>Human Annotations</span>
-                </a>
-              </span> -->
-
-                <!-- <span class="link-block">
-        <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
-          <span class="icon">
-            <i class="far fa-images"></i>
-          </span>
-          <span>TIFA v1.0 Leaderboard</span>
-        </a>
-      </span> -->
-
-
+    
               </div>
-
-
 
             </div>
           </div>
@@ -201,15 +189,26 @@
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
   We propose <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:25px; height:25px;">, a
-  simple and effective method that can detect whether if a large language model (e.g., GPT-3) was trained on the provided
+  simple and effective method that can detect whether if a large language model (e.g., GPT-3) was pretrained on the provided
   text without knowing the pretraining data.</b>
   
-      <img src="./static/images/intro.png" alt="teaser">
+      <img src="./static/images/intro2.png" alt="teaser">
 
-<h2 class="subtitle">
-  Min-K% Prob is an effective tool for <b>detecting benchmark example contamination</b> and
-  <a href="#copyrighted-detection"> <b>copyrighted texts</b> </a> in language models' training data.
-</h2>
+      
+
+
+<h3 class="subtitle">
+    <style>
+      .subtitle a {
+        color: blue;
+      }
+    </style>
+  Min-K% Prob is an effective tool for <b>benchmark example contamination detection</b>,
+  <a href="#privacy-auditing"><b>privacy auditing of machine unlearning</b></a>,
+  and <a href="#copyrighted-detection"><b>copyrighted text detection</b></a> in language models' pretraining
+  data.
+</h3>
+
 
     </div>
   </div>
@@ -233,22 +232,19 @@
             proportions.
           </p>
 
-          <p>
-           <li><b>Dynamic Benchmark WikiMIA</b> In this paper, we explore the pretraining data detection problem<span>&#x1F575;&#xFE0F;</span>: given a piece of
+           <li><b>Pretraining Ddata detection problem</b>. In this paper, we explore the pretraining data detection problem<span>&#x1F575;&#xFE0F;</span>: given a piece of
             text and
             black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
             on the
             provided text? 
             
-            <li><b>Dynamic Benchmark WikiMIA</b>. To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
+            <li><b>Dynamic benchmark WikiMIA</b>. To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
                 target="_blank">
                 a dynamic benchmark WikiMIA</a></b> <span>&#128214;</span> that uses data created both before and
             after model training
-            to provide accurate detection.
-          </p>
+            to support gold truth detection.
 
-          <p>
-          <li><b>Detection Method Min-K% Prob</b>. We also design a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
+          <li><b>Detection method Min-K% Prob</b>. We also design a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
                 method Min-K%
                 Prob</a></b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="width:25px; height:25px;">. This is built
             on a straightforward
@@ -261,15 +257,13 @@
             that necessitate educating a reference model on data analogous to the pretraining data. Furthermore, our
             tests indicate
             that Min-K% Prob delivers a 7.4% enhancement on WikiMIA relative to these preceding techniques. 
-            </p>
 
-            <p>
-            <li><b>Real-life usecases</b>. We employ
+            <li><b>Real-life use cases</b>. We employ
             Min-K% Prob in
-            two real-life contexts: detecting copyrighted books and pinpointing contaminated downstream examples, and we
-            discover
-            it's consistently an effective solution.
-          </p>
+            three real-life contexts: <strong>benchmark example contamination detection</strong>,
+            <a href="#privacy-auditing"><strong>privacy auditing of machine unlearning</strong></a>,
+            and <a href="#copyrighted-detection"><strong>copyrighted text detection</strong></a> in language models' pretraining
+            data.
         </div>
       </div>
     </div>
@@ -278,13 +272,82 @@
 </section>
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Detection Method Min-K% Prob</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>What is Min-K% Prob?</strong><br>
+            We propose a pretraining data detection method named Min-K% Prob. Our method is based on a simple
+            hypothesis: an unseen example tends to contain a few outlier words with low probabilities, whereas a seen
+            example is less likely to contain words with such low probabilities. MIN-K% Prob computes the average
+            probabilities of outlier tokens.
+          </p>
+
+          <p>
+            <strong>How to use Min-K% Prob?</strong><br>
+            To check if a text was in LLM's pretraining:
+          <ol>
+            <li>Evaluate token probabilities in the text.</li>
+            <li>Pick the k% tokens with minimum probabilities.</li>
+            <li>Compute their average log likelihood.</li>
+          </ol>
+          If the average log likelihood is high, the text is likely in the pretraining data. ✅
+          </p>
+
+          See more results in our paper: .... (will add this later)
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" id="privacy-auditing">Auditing machine unlearning with Min-K% Prob</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Machine Unlearning</strong><br>
+            <a href="https://www.microsoft.com/en-us/research/project/physics-of-agi/articles/whos-harry-potter-making-llms-forget-2/"> Recent work from MSR </a> shows how LLMs can unlearn copyrighted training data via strategic fine-tuning.
+            They made Llama2-7B-chat unlearn the entire Harry Potter magical world and released it as
+            <a href="https://huggingface.co/microsoft/Llama2-7b-WhoIsHarryPotter">Llama2-7B-WhoIsHarryPotter</a> for
+            scrutiny.
+            But with our Min-K% Prob technique, we've found that some “magical traces” still remain, producing Harry
+            Potter content! 🧙‍♂️🔮
+          </p>
+          <p>
+            <img src="./static/images/unlearn_full.png"
+              alt="Graph depicting the process of unlearning Harry Potter content">
+          </p>
+          <p>
+            <strong> Auditing machine unlearning with Min-K% Prob </strong> <br>
+            The unlearned model LLaMA2-7B-WhoIsHarryPotter answers the questions related to Harry
+              Potter correctly. We manually cross-checked these responses against the Harry Potter book series
+            for verification.<br>
+            <img src="./static/images/unlearn_result.png" alt="Results showing the unlearned model's responses">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <!-- <h2 class="title is-3" id="copyrighted-detection">Copyrighted Book Detection</h2> -->
-        <h2 class="title is-3">Copyrighted Book Detection</h2>
+        <h2 class="title is-3" id="copyrighted-detection">Detecting Copyrighted Books in LLMs with Min-K% Prob</h2>
         <div class="content has-text-justified">
 
         <!-- <title>Top 20 Copyrighted Books in GPT-3's (text-davinci-003) Pretraining Data detected by Min-K% Prob</title> -->
