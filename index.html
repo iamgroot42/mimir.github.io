@@ -13,11 +13,11 @@
   </script>
 
   <meta charset="utf-8">
-  <meta name="description" content="Detecting Pretraining Data from Large Language Models">
+  <meta name="description" content="Do Membership Inference Attacks Work on Large Language Models?">
   <meta name="keywords"
-    content="Membership Inference Attack, Copyrighted Information Detection, Dataset contamination, GPT-3">
+    content="Membership Inference, LLMs, Machine Learning Privacy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detecting Pretraining Data from Large Language Models</title>
+  <title>Do Membership Inference Attacks Work on Large Language Models?</title>
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -53,90 +53,52 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-
-  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://yushi-hu.github.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://finegrainedrlhf.github.io/">
-            Fine-Grained RLHF
-          </a>
-          <a class="navbar-item" href="https://yushi-hu.github.io/promptcap_demo/">
-            PromptCap
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav> -->
-
-
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              <span class="big-emoji">&#x1F575;&#xFE0F;</span>
-              Detecting Pretraining Data from Large Language Models
+              <span class="big-emoji">🤔</span>
+              Do Membership Inference Attacks Work on Large Language Models?
             </h1>
             <div class="is-size-5">
               <span class="author-block">
-                <a href="http://swj0419.github.io" style="color:#f68946;font-weight:normal;">Weijia
-                  Shi<sup>*</sup></a><sup>1</sup>,
+                <a href="https://www.linkedin.com/in/micdun/" style="color:#008AD7;font-weight:normal;">Michael Duan<sup>*</sup></a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://anirudhajith.github.io/about/" style="color:#008AD7;font-weight:normal;">Anirudh Ajith<sup>*</sup></a><sup>2</sup>,
+                <a href="https://www.anshumansuri.me/" style="color:#f68946;font-weight:normal;">Anshuman Suri<sup>*</sup></a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://xiamengzhou.github.io/" style="color:#008AD7;font-weight:normal;">Mengzhou
-                  Xia</a><sup>2</sup>,
+                <a href="https://homes.cs.washington.edu/~niloofar/" style="color:#008AD7;font-weight:normal;">Niloofar Mireshghallah</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://hazelsuko07.github.io/yangsibo/" style="color:#008AD7;font-weight:normal;">Yangsibo
-                  Huang</a><sup>2</sup>,
+                <a href="https://shmsw25.github.io/" style="color:#008AD7;font-weight:normal;">Sewon Min</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://daogaoliu.github.io/" style="color:#f68946;font-weight:normal;">Daogao
-                  Liu</a><sup>1</sup>,
+                <a href="http://swj0419.github.io/" style="color:#008AD7;font-weight:normal;">Weijia Shi</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://blvns.github.io/" style="color:#f68946;font-weight:normal;">Terra
-                  Blevins</a><sup>1</sup>,
+                <a href="https://www.cs.washington.edu/people/faculty/lsz" style="color:#008AD7;font-weight:normal;">Luke Zettlemoyer</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://www.cs.princeton.edu/~danqic/" style="color:#008AD7;font-weight:normal;">Danqi
-                  Chen</a><sup>2</sup>,
+                <a href="https://homes.cs.washington.edu/~yuliats/" style="color:#008AD7;font-weight:normal;">Yulia Tsvetkov</a><sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://www.cs.washington.edu/people/faculty/lsz" style="color:#f68946;font-weight:normal;">Luke
-                  Zettlemoyer</a><sup>1</sup>,
+                <a href="https://homes.cs.washington.edu/~yejin/" style="color:#008AD7;font-weight:normal;">Yejin Choi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.virginia.edu/~evans/" style="color:#f68946;font-weight:normal;">David Evans</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://homes.cs.washington.edu/~hannaneh/" style="color:#008AD7;font-weight:normal;">Hannaneh Hajishirzi</a><sup>1</sup>,
               </span>
             </div>
   
             <br>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><b style="color:#f68946; font-weight:normal">▶ </b>University of
-                Washington</span>
-              <span class="author-block"><b style="color:#008AD7; font-weight:normal">▶ </b>Princeton University</span>
+              <span class="author-block"><b style="color:#008AD7; font-weight:normal">▶ </b>University of Washington</span>
+              <span class="author-block"><b style="color:#f68946; font-weight:normal">▶ </b>University of Virginia</span>
               <span class="author-block">&nbsp;&nbsp;<sup>*</sup>Equal Contribution</span>
             </div>
 
@@ -145,7 +107,7 @@
                 <div class="publication-links">
                   <!-- PDF Link. -->
                   <span class="link-block">
-                    <a href="https://arxiv.org/pdf/2310.16789.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://arxiv.org/pdf/2402.07841.pdf" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
@@ -155,7 +117,7 @@
 
               <!-- code Link. -->
               <span class="link-block">
-                <a href="https://github.com/swj0419/detect-pretrain-code" class="external-link button is-normal is-rounded is-dark">
+                <a href="http://github.com/iamgroot42/mimir" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
@@ -165,28 +127,15 @@
 
                 <!-- Dataset Link. -->
                 <span class="link-block">
-                  <a href="https://huggingface.co/datasets/swj0419/WikiMIA"
+                  <a href="https://huggingface.co/datasets/iamgroot42/mimir"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="far fa-images"></i>
                     </span>
-                    <span>WikiMIA datasets</span>
+                    <span>Data</span>
                   </a>
                 </span>
-
-                  <!-- Dataset Link. -->
-                <span class="link-block">
-                  <a href="https://huggingface.co/datasets/swj0419/BookMIA"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
-                    </span>
-                    <span>BookMIA datasets</span>
-                  </a>
-                </span>
-    
               </div>
-
             </div>
           </div>
         </div>
@@ -536,14 +485,12 @@
         <div class="container is-max-desktop content">
           <h2 class="title">BibTeX</h2>
           <pre><code>
-@misc{shi2023detecting,
-title={Detecting Pretraining Data from Large Language Models},
-author={Weijia Shi and Anirudh Ajith and Mengzhou Xia and Yangsibo Huang and Daogao Liu and Terra Blevins and Danqi Chen
-and Luke Zettlemoyer},
-year={2023},
-eprint={2310.16789},
-archivePrefix={arXiv},
-primaryClass={cs.CL}
+@article{duan2024membership,
+title={Do Membership Inference Attacks Work on Large Language Models?},
+author={Duan, Michael and Suri, Anshuman and Mireshghallah, Niloofar and Min, Sewon and Shi, Weijia and Zettlemoyer,
+Luke and Tsvetkov, Yulia and Choi, Yejin and Evans, David and Hajishirzi, Hannaneh},
+journal={arXiv preprint arXiv:2402.07841},
+year={2024}
 }
 </code></pre>
         </div>
