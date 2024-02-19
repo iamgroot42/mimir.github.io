@@ -143,36 +143,6 @@
     </div>
   </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="subtitle has-text-centered">
-  We propose <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon" style="width:25px; height:25px;">, a
-  simple and effective method that can detect whether if a large language model (e.g., GPT-3) was pretrained on the provided
-  text without knowing the pretraining data.</b>
-  
-      <img src="./static/images/intro2.png" alt="teaser">
-
-      
-
-
-<h3 class="subtitle">
-    <style>
-      .subtitle a {
-        color: blue;
-      }
-    </style>
-  Min-K% Prob is an effective tool for <b>benchmark example contamination detection</b>,
-  <a href="#privacy-auditing"><b>privacy auditing of machine unlearning</b></a>,
-  and <a href="#copyrighted-detection"><b>copyrighted text detection</b></a> in language models' pretraining
-  data.
-</h3>
-
-
-    </div>
-  </div>
-</section>
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -181,48 +151,21 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed.
-            Given the
-            incredible scale of this data, up to trillions of tokens, it's nearly certain it includes potentially
-            problematic
-            text such as copyrighted materials, personally identifiable information, and test data for widely reported
-            reference
-            benchmarks. However, we currently lack knowledge on which data of these types is included or in what
-            proportions.
-          </p>
-
-           <li><b>Pretraining Ddata detection problem</b>. In this paper, we explore the pretraining data detection problem<span>&#x1F575;&#xFE0F;</span>: given a piece of
-            text and
-            black-box access to an LLM without knowing the pretraining data, can we determine if the model was trained
-            on the
-            provided text? 
+            Membership inference attacks (MIAs) attempt to predict whether a particular datapoint is a member of a target model's
+            training data. Despite extensive research on traditional machine learning models, there has been limited work studying
+            MIA on the pre-training data of large language models (LLMs).
             
-            <li><b>Dynamic benchmark WikiMIA</b>. To aid this study, we present <b><a href="https://huggingface.co/datasets/swj0419/WikiMIA"
-                target="_blank">
-                a dynamic benchmark WikiMIA</a></b> <span>&#128214;</span> that uses data created both before and
-            after model training
-            to support gold truth detection.
+            We perform a large-scale evaluation of MIAs over a suite of language models (LMs) trained on the Pile, ranging from 160M
+            to 12B parameters. We find that MIAs barely outperform random guessing for most settings across varying LLM sizes and
+            domains.
+            Our further analyses reveal that this poor performance can be attributed to (1) the combination of a large dataset and
+            few training iterations, and (2) an inherently fuzzy boundary between members and non-members.
 
-          <li><b>Detection method Min-K% Prob</b>. We also design a new <b><a href="https://github.com/swj0419/detect-pretrain-code" target="_blank">detection
-                method Min-K%
-                Prob</a></b> <img src="static/images/min-k_icon.png" alt="Min-K Icon" style="width:25px; height:25px;">. This is built
-            on a straightforward
-            hypothesis: an unobserved example is more likely to have a few outlier words with low probabilities under
-            the LLM,
-            while a recognized example is less inclined to contain words with such reduced probabilities. Min-K% Prob
-            operates
-            without any insight into the pretraining corpus or any extra training, distinguishing it from past detection
-            strategies
-            that necessitate educating a reference model on data analogous to the pretraining data. Furthermore, our
-            tests indicate
-            that Min-K% Prob delivers a 7.4% enhancement on WikiMIA relative to these preceding techniques. 
-
-            <li><b>Real-life use cases</b>. We employ
-            Min-K% Prob in
-            three real-life contexts: <strong>benchmark example contamination detection</strong>,
-            <a href="#privacy-auditing"><strong>privacy auditing of machine unlearning</strong></a>,
-            and <a href="#copyrighted-detection"><strong>copyrighted text detection</strong></a> in language models' pretraining
-            data.
+            We identify specific settings where LLMs have been shown to be vulnerable to membership inference and show that the
+            apparent success in such settings can be attributed to a distribution shift, such as when members and non-members are
+            drawn from the seemingly identical domain but with different temporal ranges.
+            We release our <a href="http://github.com/iamgroot42/mimir">code</a> and <a href="https://huggingface.co/datasets/iamgroot42/mimir">data</a> as a unified benchmark package that includes all existing MIAs, supporting future work.
+          </p>
         </div>
       </div>
     </div>
@@ -230,6 +173,38 @@
   </div>
 </section>
 
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="subtitle has-text-centered">
+        We propose <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon"
+          style="width:25px; height:25px;">, a
+        simple and effective method that can detect whether if a large language model (e.g., GPT-3) was pretrained on
+        the provided
+        text without knowing the pretraining data.</b>
+
+        <img src="./static/images/intro2.png" alt="teaser">
+
+
+
+
+        <h3 class="subtitle">
+          <style>
+            .subtitle a {
+              color: blue;
+            }
+          </style>
+          Min-K% Prob is an effective tool for <b>benchmark example contamination detection</b>,
+          <a href="#privacy-auditing"><b>privacy auditing of machine unlearning</b></a>,
+          and <a href="#copyrighted-detection"><b>copyrighted text detection</b></a> in language models' pretraining
+          data.
+        </h3>
+
+
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
