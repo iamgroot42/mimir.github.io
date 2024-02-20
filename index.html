@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DERZX1PWZ4"></script>
@@ -17,7 +16,8 @@
   <meta name="keywords"
     content="Membership Inference, LLMs, Machine Learning Privacy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Do Membership Inference Attacks Work on Large Language Models?</title>
+  <title style="color:white">Do Membership Inference Attacks Work on Large Language Models?</title>
+  <link rel="icon" href="./static/images/favicon.png">
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -101,6 +101,17 @@
               <span class="author-block"><b style="color:#f68946; font-weight:normal">▶ </b>University of Virginia</span>
               <span class="author-block">&nbsp;&nbsp;<sup>*</sup>Equal Contribution</span>
             </div>
+
+            </br>
+            <!--Centered Image Start-->
+            <div style="text-align: center;">
+              <img src="./static/images/logo.png" alt="" style="width:35%;height:35%;" class="center">
+              <figcaption style="font-size: small;"><a href="http://github.com/iamgroot42/mimir">MIMIR</a> logo. Image credit: <a href="https://chat.openai.com/">GPT-4 + DALL-E</a>
+              </figcaption>
+              <!-- <figcaption style="font-size: small;">Image credit: <a href="https://www.bing.com/create">Bing Image Creator</a> and <a href="https://en.wikipedia.org/wiki/To_be,_or_not_to_be">Shakespeare's Hamlet</a></figcaption> -->
+              </figure>
+            </div>
+            <!--Centered Image End-->
 
             
               <div class="column has-text-centered">
@@ -232,7 +243,7 @@
           If the average log likelihood is high, the text is likely in the pretraining data. ✅
           </p>
 
-<a href="https://arxiv.org/pdf/2310.16789.pdf" target="_blank">See more results in our paper</a>
+<a href="https://arxiv.org/pdf/2402.07841.pdf" target="_blank">See more results in our paper</a>
         </div>
       </div>
     </div>
@@ -245,7 +256,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3" id="privacy-auditing">Auditing machine unlearning with Min-K% Prob</h2>
+        <h2 class="title is-3" id="privacy-auditing">Result Highlights</h2>
         <div class="content has-text-justified">
           <p>
             <strong>Machine Unlearning</strong><br>
@@ -274,192 +285,32 @@
 </section>
 
 
-
-
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Next. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <!-- <h2 class="title is-3" id="copyrighted-detection">Copyrighted Book Detection</h2> -->
-        <h2 class="title is-3" id="copyrighted-detection">Detecting Copyrighted Books in LLMs with Min-K% Prob</h2>
+        <h2 class="title is-3">What's Next?</h2>
         <div class="content has-text-justified">
-
-        <!-- <title>Top 20 Copyrighted Books in GPT-3's (text-davinci-003) Pretraining Data detected by Min-K% Prob</title> -->
-        <style>
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-
-          table,
-          th,
-          td {
-            border: 1px solid black;
-          }
-
-          th,
-          td {
-            padding: 8px;
-            text-align: left;
-          }
-
-          th {
-            background-color: #f2f2f2;
-          }
-        </style>
-      </head>
-
-      <body>
-
-        <table>
-          <caption><b style="color: red;">Top 20 Copyrighted Books in GPT-3's pretraining data (text-davinci-003) detected by Min-K%
-            Prob</b> (Min-K% Prob achieves AUC score of 0.87 on the validation data). The listed contamination rate represents the
-            percentage of text excerpts from each book identified in the pretraining data.</caption>
-          <thead>
-            <tr>
-              <th>Contamination %</th>
-              <th>Book Title</th>
-              <th>Author</th>
-              <th>Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>100</td>
-              <td>The Violin of Auschwitz</td>
-              <td>Maria Àngels Anglada</td>
-              <td>2010</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>North American Stadiums</td>
-              <td>Grady Chambers</td>
-              <td>2018</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>White Chappell Scarlet Tracings</td>
-              <td>Iain Sinclair</td>
-              <td>1987</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Lost and Found</td>
-              <td>Alan Dean</td>
-              <td>2001</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>A Different City</td>
-              <td>Tanith Lee</td>
-              <td>2015</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Our Lady of the Forest</td>
-              <td>David Guterson</td>
-              <td>2003</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>The Expelled</td>
-              <td>Mois Benarroch</td>
-              <td>2013</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Blood Cursed</td>
-              <td>Archer Alex</td>
-              <td>2013</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Genesis Code: A Thriller of the Near Future</td>
-              <td>Jamie Metzl</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Sleepwalker's Guide to Dancing</td>
-              <td>Mira Jacob</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Harlan Ellison Hornbook</td>
-              <td>Harlan Ellison</td>
-              <td>1990</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Book of Freedom</td>
-              <td>Paul Selig</td>
-              <td>2018</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Three Strong Women</td>
-              <td>Marie NDiaye</td>
-              <td>2009</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Leadership Mind Switch: Rethinking How We Lead in the New World of Work</td>
-              <td>D. A. Benton, Kylie Wright-Ford</td>
-              <td>2017</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Gold</td>
-              <td>Chris Cleave</td>
-              <td>2012</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>The Tower</td>
-              <td>Simon Clark</td>
-              <td>2005</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Amazon</td>
-              <td>Bruce Parry</td>
-              <td>2009</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Ain't It Time We Said Goodbye: The Rolling Stones on the Road to Exile</td>
-              <td>Robert Greenfield</td>
-              <td>2014</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Page One</td>
-              <td>David Folkenflik</td>
-              <td>2011</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Road of Bones: The Siege of Kohima 1944</td>
-              <td>Fergal Keane</td>
-              <td>2010</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </body>
-
-      </html>
-
+          <p>
+            </br>
+            <b>Rethinking what "membership" means:</b> ....
+            </br> </br>
+            <b>Impact of other innate characteristics:</b> ....
+            </br> </br>
+            <b>Evaluating models in-the-wild:</b> ....
+          </p>
+        </div>
+      </div>
     </div>
+    <!-- Next. -->
   </div>
 </section>
 
-
-      <section class="section is-light" id="BibTeX">
-        <div class="container is-max-desktop content">
-          <h2 class="title">BibTeX</h2>
-          <pre><code>
+<section class="section is-light" id="BibTeX">
+<div class="container is-max-desktop content">
+<h2 class="title">BibTeX</h2>
+<pre><code>
 @article{duan2024membership,
 title={Do Membership Inference Attacks Work on Large Language Models?},
 author={Duan, Michael and Suri, Anshuman and Mireshghallah, Niloofar and Min, Sewon and Shi, Weijia and Zettlemoyer,
@@ -468,8 +319,8 @@ journal={arXiv preprint arXiv:2402.07841},
 year={2024}
 }
 </code></pre>
-        </div>
-      </section>
+</div>
+</section>
 
 
 
