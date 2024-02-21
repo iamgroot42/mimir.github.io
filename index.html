@@ -17,7 +17,7 @@
     content="Membership Inference, LLMs, Machine Learning Privacy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title style="color:white">Do Membership Inference Attacks Work on Large Language Models?</title>
-  <link rel="icon" href="./static/images/favicon.png">
+  <link rel="icon" href="./static/images/logo.png">
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -105,7 +105,7 @@
             </br>
             <!--Centered Image Start-->
             <div style="text-align: center;">
-              <img src="./static/images/logo.png" alt="" style="width:35%;height:35%;" class="center">
+              <img src="./static/images/logo.png" alt="" style="width:25%;height:25%;" class="center">
               <figcaption style="font-size: small;"><a href="http://github.com/iamgroot42/mimir">MIMIR</a> logo. Image credit: <a href="https://chat.openai.com/">GPT-4 + DALL-E</a>
               </figcaption>
               <!-- <figcaption style="font-size: small;">Image credit: <a href="https://www.bing.com/create">Bing Image Creator</a> and <a href="https://en.wikipedia.org/wiki/To_be,_or_not_to_be">Shakespeare's Hamlet</a></figcaption> -->
@@ -294,11 +294,20 @@
         <div class="content has-text-justified">
           <p>
             </br>
-            <b>Rethinking what "membership" means:</b> ....
+            <b>Impact of other innate characteristics:</b> Other factors inherent to attacking LLMs, such as the diversity of
+            training data may also contribute to the difficulty of membership inference against LLMs.
+            State-of-the-art LLMs are trained on highly diverse data, rather than being domain-specific.
+            <i>It is thus likely that increased pre-training data diversity can lower vulnerability to MIAs.</i>
             </br> </br>
-            <b>Impact of other innate characteristics:</b> ....
+            <b>Rethinking what "membership" means:</b> The high overlap between member and non-member samples from the same domain creates ambiguity in determining membership.
+            Non-members sharing high overlap with members may not be members by exact match standards but may contain meaningful identifiers that leak information.
+           <i>There is thus a need, especially for generative models, to consider membership not just for exact records but for a neighborhood around records.</i>
             </br> </br>
-            <b>Evaluating models in-the-wild:</b> ....
+            <b>Privacy auditing:</b> Our results suggest two possibilities: (1) data does not leave much of an imprint, owing to characteristics of the
+            pre-training process at scale, and (2) the similarity between in and out members, coupled with huge datasets, makes this distinction fuzzy, even for an oracle.
+            Having a better understanding of the first possibility is especially critical for privacy audits.
+            While it may be possible to increase leakage via stronger attacks in such a scenario, the second scenario requires rethinking the membership game itself.
+            <i>In the meanwhile, special care should thus be taken to avoid unintentional distributional shifts while constructing non-members for MIA benchmark construction.</i>
           </p>
         </div>
       </div>
