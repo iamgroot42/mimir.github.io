@@ -189,16 +189,16 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
-        We propose <b>Min-K% Prob</b> <img src="static/images/min-k_icon.png" alt="Min-K icon"
-          style="width:25px; height:25px;">, a
-        simple and effective method that can detect whether if a large language model (e.g., GPT-3) was pretrained on
-        the provided
-        text without knowing the pretraining data.</b>
 
-        <img src="./static/images/intro2.png" alt="teaser">
-
-
-
+        <blockquote style="border-radius: 10px; background-color: #e0f3ff; padding: 10px;">
+          Born in Berlin, Wisconsin, Smith graduated from University of Wisconsin in 1901. He was the principal at Cashton High
+          School in Cashton, Wisconsin and taught at the Viroqua High School in Viroqua, Wisconsin. He married Edith Ogden
+          (1887-1955) in 1905. He was the first principal of the Vernon County Teachers College from 1907 to 1920, and was
+          in the insurance business.
+        </blockquote>
+        <figcaption style="font-size: small;">
+            It <a href="https://en.wikipedia.org/wiki/August_E._Smith">indeed was</a> in the training dataset!
+        </figcaption>
 
         <h3 class="subtitle">
           <style>
@@ -206,12 +206,8 @@
               color: blue;
             }
           </style>
-          Min-K% Prob is an effective tool for <b>benchmark example contamination detection</b>,
-          <a href="#privacy-auditing"><b>privacy auditing of machine unlearning</b></a>,
-          and <a href="#copyrighted-detection"><b>copyrighted text detection</b></a> in language models' pretraining
-          data.
+          Was this sequence in the training dataset or not? In this work, we study why membership inference attacks show <b>near-random performance</b> on LLMs!
         </h3>
-
 
     </div>
   </div>
@@ -222,28 +218,69 @@
     <!-- Abstract -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Detection Method Min-K% Prob</h2>
+        <h2 class="title is-3"><span>🔒</span> Why is MI challenging against LLMs?</h2>
         <div class="content has-text-justified">
+          We observe that all existing MIAs perform near random for most domains. While membership inference has shown great success in other related machine-learning tasks and even fine-tuning stages of LLMs, it is 
+          surprising that it performs poorly on the pre-training data of LLMs. <br><br>
+          <img src="./static/images/mia_results_pythia_dedup.png" alt="teaser">
+          <figcaption style="font-size: small;">
+            AUC ROC of MIAs against Pythia-Dedup across different datasets from the Pile.
+            The highest performance across the different MIAs is bolded per domain. <b>MIA methods perform near random ($<.6$) in
+                most domains.</b> We do not run the Neighborhood attack for the 12B model on The Pile due to computational
+                constraints, but believe it will follow similar trends.
+          </figcaption>
+          <br>
           <p>
-            <strong>What is Min-K% Prob?</strong><br>
-            We propose a pretraining data detection method named Min-K% Prob. Our method is based on a simple
-            hypothesis: an unseen example tends to contain a few outlier words with low probabilities, whereas a seen
-            example is less likely to contain words with such low probabilities. MIN-K% Prob computes the average
-            probabilities of outlier tokens.
-          </p>
+            We identify several key factors that may contribute to the decreased performance of MIAs on LLMs.
 
+            <h3 class="title is-4"><span>🤖</span> Characteristics of Pretrained LLMs</h3>
+            <p>
+            <strong>Training Data Size</strong>
+            <div style="text-align: left">
+            Attack performance as the amount of training data seen, measured in the number of training steps,
+            increases across 1 epoch of the deduplicated Pile pre-training corpus.
+            Each training step corresponds to seeing 2,097,152 tokens. In general,
+            <b>performance spikes greatly before gradually decreasing as training data seen increases.</b>
+            </div>
+
+            <img src="./static/images/training_data.png" alt="" style="width:100%;height:100%;" class="center">
+
+            We notice a common pattern in MIA performance: it begins somewhat randomly, then quickly improves over the initial few
+            thousand steps before declining across subsequent checkpoints. We speculate the initial low performance is due to the
+            model warming up in training, with high losses across both member and non-member samples. We believe the rapid rise and then gradual decline
+            in performance are because the data-to-parameter-count ratio is smaller early in training and the model may tend to
+            overfit, but generalizes better as training progresses.
+            </p>
+
+            <p>
+            <strong>Number of Training Epochs</strong><br>
+            Increasing the number of effective epochs corresponds to an increase in attack performance.
+            While <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/9d89448b63ce1e2e8dc7af72c984c196-Paper-Conference.pdf">Muennighoff et al.</a> shows training for multiple epochs helps improve performance, our results suggest
+            that such multi-epoch training (and/or large upsampling factors that effectively increase epoch count) may increase
+            training data leakage. Essentially, <b>near-one epoch training of LLMs leads to decreased MIA performance</b>.
+            <a href="https://arxiv.org/pdf/2402.07841.pdf" target="_blank">See more results in our paper</a>
+            </p>
+          </p>
           <p>
-            <strong>How to use Min-K% Prob?</strong><br>
-            To check if a text was in LLM's pretraining:
-          <ol>
-            <li>Evaluate token probabilities in the text.</li>
-            <li>Pick the k% tokens with minimum probabilities.</li>
-            <li>Compute their average log likelihood.</li>
-          </ol>
-          If the average log likelihood is high, the text is likely in the pretraining data. ✅
+            <h3 class="title is-4"><span>😵‍💫</span> Inherent Ambiguity in MIA</h3>
+            Natural language documents commonly have repeating text; even with the best efforts in decontamination and
+            deduplication. These include common phrasings and quotes, natural use of similar texts, and syntactical similarities
+            inherent to specific domains. This leads to substantial text overlap between members and non-members.
+            <b>We also note that n-gram overlap distribution analysis can help assess how representative of a target domain a set of
+            candidate non-members is when constructing MIA benchmarks.</b>
           </p>
+          <figure>
+            <img src="./static/images/temporal_arxiv.png" alt="" style="width:100%;height:100%;" class="center">
+            <figcaption style="font-size: small;">Distribution of 7-gram overlap for temporally-shifted Wikipedia non-members. We additionally plot the 7-gram overlap
+            distribution of the original Pile Wikipedia non-members
+            </figcaption>
+          </figure>
+          <br>
+          For instance, we observe that temporally shifted settings yield MIA performances significantly higher than when members and non-members are from
+          the same temporal range, but can attribute this change to a difference in n-gram overlap. 
+          While distinguishing between members and temporally shifted non-members is a realistic inference game (distribution inference) with practical implications, it often differs from the classical MI game
+          as the temporally-shifted non-members belong to a different distribution. <b>Special care should thus be taken when constructing MIA benchmarks to not implicitly introduce such differences</b>.
 
-<a href="https://arxiv.org/pdf/2402.07841.pdf" target="_blank">See more results in our paper</a>
         </div>
       </div>
     </div>
@@ -252,45 +289,51 @@
 </section>
 
 
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3" id="privacy-auditing">Result Highlights</h2>
+        <h2 class="title is-3" id="privacy-auditing"><span>💭</span> What Even is "Membership"?</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>Machine Unlearning</strong><br>
-            <a href="https://www.microsoft.com/en-us/research/project/physics-of-agi/articles/whos-harry-potter-making-llms-forget-2/"> Recent work from MSR </a> shows how LLMs can unlearn copyrighted training data via strategic fine-tuning.
-            They made Llama2-7B-chat unlearn the entire Harry Potter magical world and released it as
-            <a href="https://huggingface.co/microsoft/Llama2-7b-WhoIsHarryPotter">Llama2-7B-WhoIsHarryPotter</a> for
-            scrutiny.
-            But with our Min-K% Prob technique, we've found that some “magical traces” still remain, producing Harry
-            Potter content! 🧙‍♂️🔮
+            The way membership is defined in the standard membership game treats information leakage as a binary outcome. While
+            metrics are aggregated over multiple records/instances to provide a sense of "how" much is leaked, the binary
+            membership outcome itself may be at odds with what adversaries and privacy auditors care about: information leakage.
+            <i>This is especially true for generative models, where guessing the membership of some record via other sufficiently close
+            records can be useful.</i>
+
+            We start with a simple experiment: generating modified member records by replacing <i>n</i> random tokens in a given record
+            with tokens randomly sampled from the model's vocabulary. We repeat this for 20 trials and visualize the distribution for MIA scores below.
           </p>
-          <p>
-            <img src="./static/images/unlearn_full.png"
-              alt="Graph depicting the process of unlearning Harry Potter content">
-          </p>
-          <p>
-            <strong> Auditing machine unlearning with Min-K% Prob </strong> <br>
-            The unlearned model LLaMA2-7B-WhoIsHarryPotter answers the questions related to Harry
-              Potter correctly. We manually cross-checked these responses against the Harry Potter book series
-            for verification.<br>
-            <img src="./static/images/unlearn_result.png" alt="Results showing the unlearned model's responses">
-          </p>
+            <figure>
+              <img src="./static/images/mem_nonmem_edit_distance.png" alt="" style="width:100%;height:100%;" class="center">
+              <figcaption style="font-size: small;">Distribution of scores for LOSS and Reference-based attacks for members, non-members, and modified members (generated
+              with a certain edit-distance in token space), across ArXiv and Wikipedia domains. 
+              </figcaption>
+            </figure>
+            LOSS MIA score distributions are significantly distinct for <i>n</i> as low as 10, suggesting these models are extremely sensitive to random token swaps.
+            At the same time for Reference-based MIA, Github seems to be more resilient to token swaps, likely owing to the nature of
+            data from this domain (more code than natural language).
+            <p>
+              <br>
+              We observe similar trends with neighbors close semantically. We hope that these experiments can demonstrate that an ideal distance function (for defining "neighborhood" of a record)
+              should combine the benefits of lexical distance and semantics.
+              <b>Such observations also motivate a fully semantic MI game, where a neighbor member may be defined by its proximity to an exact
+              member in a semantic embedding space.</b>
+            </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Next. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">What's Next?</h2>
+        <h2 class="title is-3"><span>⏭️</span> What's Next?</h2>
         <div class="content has-text-justified">
           <p>
             </br>
